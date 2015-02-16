@@ -1,0 +1,26 @@
+#test-info {
+    text-align: right;
+}
+
+#choices .list-group-item {
+    margin-bottom: 10px;
+}
+
+#drop-zone {
+    border: 2px dashed #BBB;
+    border-radius: 5px;
+    padding: 25px;
+    text-align: center;
+    color: #BBB;
+}
+
+.example {
+    padding: 10px;
+    border: 1px solid #CCC;
+    width: 50%;
+    height: 30%;
+    margin: 5 5 5 5;
+}
+
+
+
