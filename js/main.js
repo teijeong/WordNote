@@ -13,11 +13,13 @@ function handleFileselect (event) {
         reader.onload = (function(file) {
             return function(e) {
                 var text = e.target.result.split("\n");
+                var str = "";
                 wordNote = [];
                 for (var i = 0; i < text.length; i += 2) {
+                    str += text[i] + ": " + text[i + 1] + "\n";
                     wordNote.push([text[i]].concat(text[i+1].split(";").map(String.trim)));
                 }
-                console.log(wordNote);
+                $("#list").val(str);
                 localStorage.setItem("wordNote", JSON.stringify(wordNote));
             };
         })(f);

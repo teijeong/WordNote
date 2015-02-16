@@ -1,5 +1,6 @@
 #test-info {
     text-align: right;
+    height: 100px;
 }
 
 #choices .list-group-item {
@@ -9,18 +10,29 @@
 #drop-zone {
     border: 2px dashed #BBB;
     border-radius: 5px;
-    padding: 25px;
+    padding: 60px;
+    margin: 10px;
     text-align: center;
     color: #BBB;
+}
+
+#list {
+    width: 100%;
+    margin-right: 10px;
 }
 
 .example {
     padding: 10px;
     border: 1px solid #CCC;
-    width: 50%;
-    height: 30%;
-    margin: 5 5 5 5;
+    text-align: center;
 }
 
+.correct {
+    font-weight: bold;
+    color: green;
+}
 
-
+.incorrect {
+    font-weight: bold;
+    color: red;
+}

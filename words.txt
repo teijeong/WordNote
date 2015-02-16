@@ -18,3 +18,429 @@ I
 india; inuit
 J
 juliet; jam
+abase
+[직분, 평가 따위]를 떨어뜨리다, 격하하다
+abash
+당혹스럽게 하다, 얼떨떨하게 하다
+abate
+감소시키다, 무효로 하다
+abdicate
+포기하다, 퇴위하다, 사퇴하다
+aberration
+탈선, 정신이상
+abet
+...을 부추기다, 선동하다
+abeyance
+[잠정적]중지(상태), 정지, 휴지
+abhor
+몹시 싫어하다, 혐오하다
+abject
+비천한, 비열한, 비굴한(사람)
+abjure
+[맹세, 신의, 주장 따위]를 공개적으로 버리다, [권리 따위]를 포기하다
+abnegate
+포기하다, 버리다, 자제하다
+abomination
+증오, 혐오, 혐오감을 주는 행위(일)
+aboriginal
+원시의, 원래의, 토착의
+abortive
+실패한; 유산의, 발육부진의
+abound
+많이 있다, ...이 풍부하다
+abridge
+요약하다; 축소하다, 단축하다; 제거하다
+abrogate
+[법률, 습관 따위]를 폐기하다, 철폐/취소하다
+absolute
+절대의, 무조건의, 전체적
+Absolve
+용서하다, 사면하다, 방면하다
+abstinent
+절제하는, 금욕적인
+abstract
+추상적인, 이상적인, 난해한
+abstruse
+난해한, 심오한
+abysmal
+심연의, 끝없이 깊은
+accede
+..동의하다, 응하다, 승복하다
+accentuate
+...을 강조하다, 역설하다, 두드러지게 하다
+access
+접근, 접근하는 수단(방법), 출입
+acclaim
+갈채를 보내다, 환호하다
+Accolade
+나이트 작위 수여식; 명예, 표창
+accord
+동의/조화하다; 허용하다, 수용하다
+accost
+다가가서 말을 걸다
+accouterments
+[군복과 무기 이외의] 장비, 장구, 마구, 복장
+accrue
+[자연히]증가하다(생기다), [이자 따위가] 붙다, 늘다
+acerbic
+[맛이] 신, 신랄한
+acquiesce
+묵인하다; 묵묵히 따르다
+acquisitive
+욕심이 많은, [지식, 부귀, 세력 등을] 원하는
+acquit
+무죄로 하다, 사면하다, 석방하다; 스스로 행동하다, 처신하다
+acrid
+매운, 신랄한, 가혹한
+acrimonious
+신랄한, 엄한, 호된
+acronym
+머릿글자로 된 말(단어) ex)U.F.O.
+acumen
+예민, 날카로운 통찰력
+acute
+날카로운, 민감한
+ad-lib
+즉흥적으로 ...하다
+adage
+격언, 속담
+adamant
+단단한, 견고한, 굳센
+address
+[...에게] 말을 걸다, 연설하다‘ [항의 등을]제기/제출하다
+adduce
+...을 인용하다; [증거, 이유]를 제시하다
+adherent
+지지자, 당원, 신자; 부착력 있는, 들러붙는
+adjourn
+...을 연기하다, 미루다, 휴회하다
+adjunct
+부가물, 부수품
+admonish
+훈계하다, 충고하다; 경고하다
+adroit
+교묘한, 솜씨 있는; 기민한, 영리한
+adulation
+아첨, 추종
+adulterate
+오염시키다, 더럽히다
+advent
+[중요한 사건, 인물 따위의]출현, 도래, 등장
+adventitious
+우연히 얻은, 우연의, 우발의, 후천적인
+adverse
+반대의, 거스르는, 어긋나는, 불리한
+advocate
+변호/지지하다
+aesthetic
+미의, 심미적인
+affable
+상냥한, 사근사근한, 붙임성 있는
+affectation
+애정, 감정; 병, 성질
+affidavit
+공술서, 맹세/서약하는 글
+affiliate
+...을 합병하다, 가입시키다, 일원으로 하다, 제휴/협력하다
+affinity
+유사, 친화력, 좋아함
+affliction
+고통, 고뇌, 고난; 고통의 원인, 불행, 재앙, 박해
+affluent
+풍부한, 부유한
+afford
+...을 수여하다, 주다, 공급하다
+affront
+모욕/치욕을 주다
+aftermath
+결과, 여파, 영향
+agenda
+안건, 의사일정
+Aggrandize
+[범위를] 크게 하다, 확대하다, [부, 권력, 지위]...을 강화 확대하다
+Aggregate
+모으다, 집합하다, 총계가 ...이 되다
+aggrieve
+...에게 고통을 주다, 괴롭히다, 학대하다
+aghast
+깜짝 놀라다, 넋이 나가다
+agnostic
+불가지론자
+agrarian
+토지의, 경작지의, 농업의
+alacrity
+민첩, 기민, 경쾌, 소탈함
+alchemy
+연금술
+Alienate
+...소외하다, ...을 멀리하다, ...을 달가와하지 않다
+allege
+단언하다; 변명하다, 우겨대다; 진술하다
+Allegiance
+충성, 충의, 충실, [일에 대한] 전념
+allegory
+우화, 비유담, 풍유, 비유, 상징
+alleviate
+완화하다, 경감하다
+allocate
+할당하다, 배분하다
+allot
+할당/배당하다, 배분하다
+alloy
+합금, 혼합물
+allusion
+암시, 빗댐, 언급(hint)
+aloof
+멀리 떨어져서, 초연히; 무관심한, 쌀쌀한, 냉담함
+Altercation
+언쟁, 말다툼, 격론
+Altruism
+애타주의 이타주의(타인에게 헌신적인)
+amass
+[재산]을 모으다, 축적하다, 쌓다
+ambience
+환경, 분위기(mood)
+Ambiguous
+중의적인, 두 가지 뜻으로 풀이되는; 분명하지 않은
+Ambivalent
+아직 결정되지 않은; 중성의, 중립의; 묽은, 시시한
+ameliorate
+개선하다, 개량하다; 좋아지다
+amenable
+순종하는, 기꺼이 따르는; 쉽게 좌우되는
+amenity
+쾌적함, 즐거움, 쾌락; 부드러움, 상냥함
+amiable
+호감을 주는, 상냥한, 애교 있는
+amid
+...의 한복판에[서], ...에 둘러싸여, ...사이에, 한창에
+amnesty
+사면, 대사, 특사; 사면하다
+amoral
+초도덕의, 도덕과 관계없는
+amorous
+호색의, 요염한; 반해 있는
+amorphous
+무정형의, 일정한 형태가 없는
+anachronism
+시대착오, 시대에 뒤떨어진 사람
+analogy
+유사, 유추(similarity)
+anarchy
+무정부, 무질서
+anathema
+혐오 받는 사람(것); 저주, 심한 매도
+ancillary
+보조적인, 부속적인, 부수적인
+anecdote
+일화, 기담; 비화
+angst
+불안감
+anguish
+고통, 번민, 고뇌; 괴로워하다
+animosity
+적의, 원한, 악의
+annex
+부가하다, 첨가하다
+annuity
+연금(연봉), 연간이자 수입
+anomaly
+변칙, 이상; 예외, 이례
+antecedent
+선행자, 선례; 조상; 앞서는, 전제의
+antedate
+[시간적으로]...보다 앞선, ...이전의(예전의)
+anterior
+선행한, 보다 이전의(상태, 사건), 앞면의, 앞쪽의
+anthology
+명시 전집, 작품집, [한 작가의]전잡, 작품집
+anthropomorphic
+의인법적인(동물, 사물을 사람처럼)
+antipathy
+반감, 혐오, 불일치; 싫어하는 사람이나 물건
+antipodal
+지구의 정반대의 지역 상태, 정반대의
+antiquity
+태고, 고대; 고물, 고대의 풍습
+antithesis
+정반대
+apartheid
+인종차별
+apathy
+냉담, 무관심
+aperture
+째진 틈, 구멍, 구경
+apex
+정점, 꼭대기, 최고조, 극점
+aphorism
+격언
+apocalypse
+묵시, 요한계시록
+apocryphal
+[저자, 작품 등의]작자나 전거가 의심스러운; [일반적으로] 가짜의
+apogee
+[달, 인공위성 따위가 궤도상에서 지구와 가장 멀어지는 위치]최고점, 원지점
+apoplexy
+(뇌)졸증, 출혈, 일혈
+apostasy
+배신, 변절, 탈당
+apotheosis
+신격화
+appalling
+소름끼치는, 무서운
+apparition
+환영, 허깨비, 유령
+appease
+진정시키다, 달래다, 유화하다; 갈등을 풀다, 양보하다
+appellation
+명칭, 호칭
+appendage
+부속물, 첨가물
+apportion
+할당하다, 배분하다
+apposite
+적합한, 적절한, 딱 들어맞는
+Appraise
+...을 평가하다, 값을 매기다, 감정하다
+appreciate
+가격이 오르다, 시세가 오르다; 감사(평가)하다
+apprehensive
+염려하는, 걱정하는
+apprise
+...에게 알리다, 통보하다
+approbation
+허가, 인가, 면허
+appropriate
+적당한, 어울리는, 특정한; 전유하다, 충당하다
+appurtenance
+부속물, 부수물
+apropos
+때마침, 시기 적절하게, 적절히
+apt
+적절한, 적당한, ...하는 경향이 있는; 재주 있는, 총기 있는
+aptitude
+적성, 소질, 재능; 적절함
+arbiter
+중재인, 조정자; 결정적 요소
+arbitrary
+임의의, 독단적인(random)
+arcade
+아케이드(아치형 기둥의 열)
+arcane
+비밀의, 불가사이의(mysterious)
+archaic
+고풍의
+archetype
+원형(original model)
+archipelago
+군도(섬들의 집합)
+archives
+기록(공문서) 보관소, 공문서
+ardent
+열렬한, 열심인, 타는 듯한(↔half-hearted)
+arduous
+힘드는, 고난의; 끈기 있는, 노력하는
+arid
+마른, 습기 없는, 무미건조한, 보잘 것 없는
+aristocratic
+귀족의
+armament
+군대, 군비, 군사력
+armistice
+휴전
+arraign
+[법]공소 사실을 심리하다; 힐책하다, 규탄하다
+arrant
+철저한, 형편없는
+arrears
+지불 잔금, 연체금, 지체, 밀린
+arsenal
+병기고, 병기 창고
+artful
+교묘한, 능수 능란한; 인위적인(=crafty, wily, sly)
+articulate
+똑똑히 발음하다
+artifice
+고안, 기술, 궁리; 대책, 술책
+artisan
+직공, 기능공
+ascendancy
+우월, 지배권, 주도권
+ascertain
+확인하다, (사실 여부를) 알아내다
+ascetic
+금욕주의자, 금욕주의의
+ascribe
+(결과 따위를)...의 탓으로 치다
+askance
+비스듬히; 곁눈으로
+aspersion
+중상
+assail
+습격하다
+assert
+단언하다, 주장(옹호)하다
+assess
+(세금, 요금을) 사정하다
+assiduous
+근면한, 꾸준히 힘쓰는, 부지런한
+assimilate
+동화하는, 동질화하다, 소화하다, 이해하다; 흡수하다
+assuage
+진정시키다, 누그러뜨리다
+astringent
+엄한, 호된
+astute
+기민한, 빈틈없는; 교활한
+asylum
+(정신)보호 수용소; 보호소
+atone
+배상하다, 보상하다
+atropny
+위축시키다, 쇠약해지다; 위축, 퇴화, 쇠퇴
+attest
+증명하다, 입증하다
+attribute
+(성질을)...에 있다고 핟, (결과를)...에 돌리다
+attrition
+마멸, 마찰, 마손, 감소, 축소
+audacity
+대담; 대담한 행위(= boldness, impertinence)
+augment
+증가시키다, 늘리다; 늘다, 증대
+augur
+점치다, ...의 조짐을 보이다
+august
+위엄있는, 존엄한, 당당한
+auspices
+찬조, 후원, 주최
+auspicious
+길조의, 경사스런
+austere
+꾸밈이 없는, 간소한, 엄한, 준엄한, 엄격한
+autocratic
+독재적인
+autonomous
+자율의, 자치의, 자주적인
+auxiliary
+보조의, 예비의
+avail
+쓸모있다, ...에 도움이 되다
+avang-garde
+(예술성의)전위파
+avarice
+탐욕, 허욕(=greed)
+aversion
+싫어함, 혐오
+avert
+(눈, 생각을) 돌리다, (타격, 위험을)피하다, 막다
+avid
+탐욕스러운, 욕심 많은
+avow
+공언하다, 솔직히 인정하다
+avuncular
+백부(숙부)의; 삼촌
+awry
+굽어서; 잘못되어; 휘어서; 틀려서
+axiom
+원리, 이치, 공리, 격언
