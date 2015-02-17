@@ -24,9 +24,9 @@ function readFile(files) {
                 var text = e.target.result.split("\n");
                 var str = "";
                 wordNote = [];
-                for (var i = 0; i < text.length; i += 2) {
-                    str += text[i] + ": " + text[i + 1] + "\n";
-                    wordNote.push([text[i]].concat(text[i+1].split(";").map($.trim)));
+                for (var i = 1; i < text.length; i += 2) {
+                    str += text[i-1] + ": " + text[i] + "\n";
+                    wordNote.push([text[i-1]].concat(text[i].split(";").map($.trim)));
                 }
                 $("#list").val(str);
                 localStorage.setItem("wordNote", JSON.stringify(wordNote));
