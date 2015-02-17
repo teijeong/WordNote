@@ -26,7 +26,7 @@ function readFile(files) {
                 wordNote = [];
                 for (var i = 0; i < text.length; i += 2) {
                     str += text[i] + ": " + text[i + 1] + "\n";
-                    wordNote.push([text[i]].concat(text[i+1].split(";").map(String.trim)));
+                    wordNote.push([text[i]].concat(text[i+1].split(";").map(String.prototype.trim)));
                 }
                 $("#list").val(str);
                 localStorage.setItem("wordNote", JSON.stringify(wordNote));
@@ -44,9 +44,6 @@ function generateOptions() {
     return options;
 }
 
-$("button").click(function() {
-    localStorage.setItem("wordNote.options", JSON.stringify(generateOptions()));
-});
 
 function handleDragOver(event) {
     event.stopPropagation();
@@ -57,8 +54,11 @@ function handleDragOver(event) {
 
 $(document).ready(function() {
     $("#drop-zone").on("dragover", handleDragOver);
-    $("#drop-zone").on("drop",  handleFileselect); 
+    $("#drop-zone").on("drop",  handleFileselect);
     $("#inputfile").on("change", handleFileselect2)
     $("#list").on("dragover", handleDragOver);
     $("#list").on("drop",  handleFileselect);
+    $("button").click(function() {
+        localStorage.setItem("wordNote.options", JSON.stringify(generateOptions()));
+    });
 });
