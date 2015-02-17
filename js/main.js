@@ -26,7 +26,7 @@ function readFile(files) {
                 wordNote = [];
                 for (var i = 0; i < text.length; i += 2) {
                     str += text[i] + ": " + text[i + 1] + "\n";
-                    wordNote.push([text[i]].concat(text[i+1].split(";").map(String.prototype.trim)));
+                    wordNote.push([text[i]].concat(text[i+1].split(";").map($.trim)));
                 }
                 $("#list").val(str);
                 localStorage.setItem("wordNote", JSON.stringify(wordNote));
