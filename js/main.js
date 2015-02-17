@@ -4,8 +4,17 @@ function handleFileselect (event) {
     event.stopPropagation();
     event.preventDefault();
 
-    var files = event.originalEvent.dataTransfer.files;
+    readFile(event.originalEvent.dataTransfer.files);
+}
 
+function handleFileselect2 (event) {
+    event.stopPropagation();
+    event.preventDefault();
+
+    readFile(event.target.files);    
+}
+
+function readFile(files) {
     var output = [];
     $.each(files, function(i, f) {
 
@@ -27,6 +36,18 @@ function handleFileselect (event) {
     });
 }
 
+function generateOptions() {
+    var options = {};
+    if ($("#reverse").prop("checked")) options.reverse = true;
+    else options.reverse = false;
+    options.count = $("#count").val();
+    return options;
+}
+
+$("button").click(function() {
+    localStorage.setItem("wordNote.options", JSON.stringify(generateOptions()));
+});
+
 function handleDragOver(event) {
     event.stopPropagation();
     event.preventDefault();
@@ -36,5 +57,8 @@ function handleDragOver(event) {
 
 $(document).ready(function() {
     $("#drop-zone").on("dragover", handleDragOver);
-    $("#drop-zone").on("drop",  handleFileselect);
+    $("#drop-zone").on("drop",  handleFileselect); 
+    $("#inputfile").on("change", handleFileselect2)
+    $("#list").on("dragover", handleDragOver);
+    $("#list").on("drop",  handleFileselect);
 });

@@ -1,0 +1,20 @@
+A
+alpha; avian
+B
+bravo; bastard
+C
+charlie; choral
+D
+delta; devil
+E
+echo; epsilon
+F
+foxtrot; finch
+G
+golf; gulf
+H
+hotel; hoax
+I
+india; inuit
+J
+juliet; jam
