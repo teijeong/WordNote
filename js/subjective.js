@@ -69,6 +69,11 @@ function selectAnswer(idx) {
     }, 300);
     var myAnswer = $("#choice-" + idx + " span").text();
     var isCorrect = false;
+
+    var answer = wordNote[words[problemNo][1]].slice();
+    var question = answer[0];
+    answer = answer.splice(1,1).join(', ');
+
     if (wordNote[words[problemNo][1]].indexOf(myAnswer, 1) != -1) {
         isCorrect = true;
         correct++;
@@ -81,9 +86,6 @@ function selectAnswer(idx) {
         $("#test-info").append("<span class='correct'>Correct<br />" +
             "[ " + question + " ] Answer: " + answer + "</span>");
     else {
-        var answer = wordNote[words[problemNo][1]].slice();
-        var question = answer[0];
-        answer = answer.splice(1,1).join(', ');
         $("#test-info").append("<span class='incorrect'>Incorrect (My answer: " + myAnswer + ")<br />" +
             "[ " + question + " ] Answer: " + answer);
     }

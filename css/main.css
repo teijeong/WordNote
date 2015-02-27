@@ -3,6 +3,15 @@
     height: 100px;
 }
 
+#files input {
+    position: absolute;
+    bottom: 10px;
+}
+
+#files {
+    height: inherit;
+}
+
 #choices .list-group-item {
     margin-bottom: 10px;
 }
@@ -10,6 +19,7 @@
 #drop-zone {
     margin: 10px;
     text-align: center;
+    height: 230px;
     color: #BBB;
 }
 
@@ -34,12 +44,25 @@
 }
 
 .settings {
-    height: 100px;
     border: 2px dashed #BBB;
     padding: 5px;
+    height: inherit;
+}
+
+.options {
+    height: 300px;
+}
+
+.options .panel-body {
+    height: 200px
+    ;
 }
 
 .test-start {
-    bottom: 5px;
+    bottom: 35px;
     position: absolute;
+}
+
+#flashcard {
+    text-align: center;
 }

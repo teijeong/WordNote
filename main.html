@@ -19,26 +19,53 @@
                 <input type="file" id="inputfile">
             </div>
         </div>
-        <div class="row">
+        <div class="row options">
             <div class="col-sm-3">
-                <div id="general" class="settings">
-                    <input type="checkbox" id="reverse">단어, 뜻 바꾸기
+                <div id="general" class="panel panel-default">
+                    <div class="panel-heading">전체 설정</div>
+                    <div class="panel-body">
+                        <form class="from-horizontal">
+                            <div class="form-group">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" id="reverse">단어, 뜻 바꾸기
+                                    </label>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
             <div class="col-sm-3">
-                <div id="subjective" class="settings">
-                    보기 개수 <input type="text" id="count" value="8"/><br />
-                    <button class="btn btn-default test-start" onclick="location.href='subjective.html'">객관식 테스트</button>
+                <div id="subjective" class="panel panel-default">
+                    <div class="panel-heading">객관식 테스트 설정</div>
+                    <div class="panel-body">
+                        <form class="form-horizontal">
+                            <div class="form-group">
+                                <label for="option-count" class="col-sm-9 control-label" style="text-align:left">보기 개수</label>
+                                <div class="col-sm-3">
+                                    <input type="text" id="option-count" class="form-control" value="8"/>
+                                </div>
+                            </div>
+                        </form>
+                        <button class="btn btn-default test-start" onclick="location.href='subjective.html'">객관식 테스트</button>
+                    </div>
                 </div>
             </div>
             <div class="col-sm-3">
-                <div id="objective" class="settings">
-                    <button class="btn btn-default test-start" onclick="location.href='objective.html'">주관식 테스트</button>
+                <div id="objective" class="panel panel-default">
+                    <div class="panel-heading">주관식 테스트 설정</div>
+                        <div class="panel-body">
+                        <button class="btn btn-default test-start" onclick="location.href='objective.html'">주관식 테스트</button>
+                    </div>
                 </div>
             </div>
             <div class="col-sm-3">
-                <div id="flashcards" class="settings">
-                    <button class="btn btn-default test-start" onclick="location.href='objective.html'">암기놀이</button>
+                <div id="flashcards" class="panel panel-default">
+                    <div class="panel-heading">암기놀이 설정</div>
+                    <div class="panel-body">
+                        <button class="btn btn-default test-start" onclick="location.href='flashcard.html'">암기놀이</button>
+                    </div>
                 </div>
             </div>
         </div>
