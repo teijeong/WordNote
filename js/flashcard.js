@@ -27,16 +27,35 @@ function loadProblem(idx) {
     if( idx < 0) index = 0;
     $("#word").text(wordNote[idx][0]);
     $("#definition").empty();
-    for (var i = 1; i < wordNote[idx].length; i++) {
-        $("#definition").append("<li class='list-group-item'>" + wordNote[idx][i] + "</li>");
-    }
+    flipped = options.flip;
+    flipCard();
+}
+
+var flipped;
+function flipCard() {
+    if (flipped)
+        $("#definition").empty();
+    else
+        for (var i = 1; i < wordNote[index].length; i++) {
+            $("#definition").append("<li class='list-group-item'>" + wordNote[index][i] + "</li>");
+        }
+    flipped = !flipped;
 }
 
 $("body").keyup(function(event) {
-    if ( event.keyCode === 37 )
-        loadProblem(--index);
-    else if ( event.keyCode === 39 )
-        loadProblem(++index);
+    switch ( event.keyCode){
+        case 37: // Left
+            loadProblem(--index);
+            break;
+        case 39: // Right
+            loadProblem(++index);
+            break;
+        case 32: // Space
+        case 38: // Up
+        case 40: // Down
+            flipCard();
+            break;
+    }
 });
 
 $(document).ready( function() {

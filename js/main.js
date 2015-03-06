@@ -40,6 +40,8 @@ function generateOptions() {
     var options = {};
     if ($("#reverse").prop("checked")) options.reverse = true;
     else options.reverse = false;
+    if ($("#flip").prop("checked")) options.flip = false;
+    else options.flip = true;
     options.count = $("#option-count").val();
     return options;
 }
