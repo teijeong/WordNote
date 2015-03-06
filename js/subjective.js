@@ -58,7 +58,7 @@ function loadProblem(idx, cnt) {
 }
 
 $("body").keyup(function(event) {
-    if ( 1 <= event.key <= cnt)
+    if ( 1 <= event.key && event.key <= cnt)
         selectAnswer(event.key);
 });
 

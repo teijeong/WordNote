@@ -3,13 +3,14 @@
     <meta charset="utf-8" />
     <title>WordNote</title>
     <link href="css/bootstrap.min.css" rel="stylesheet" />
-    <link href="css/main.css" rel="stylesheet" />
     <link href="css/jquery-ui.min.css" rel="stylesheet" />
     <link href="css/jquery-ui.structure.min.css" rel="stylesheet" />
     <link href="css/jquery-ui.theme.min.css" rel="stylesheet" />
+    <link href="css/main.css" rel="stylesheet" />
 </head>
 <body>
     <div class="container">
+        <h1>WordNote</h1>
         <div id="drop-zone" class="row">
             <div class="col-sm-9">
                 <textarea rows="10" id="list"></textarea>
@@ -28,7 +29,7 @@
                             <div class="form-group">
                                 <div class="checkbox">
                                     <label>
-                                        <input type="checkbox" id="reverse">단어, 뜻 바꾸기
+                                        단어, 뜻 바꾸기<input type="checkbox" id="reverse">
                                     </label>
                                 </div>
                             </div>
@@ -42,8 +43,8 @@
                     <div class="panel-body">
                         <form class="form-horizontal">
                             <div class="form-group">
-                                <label for="option-count" class="col-sm-9 control-label" style="text-align:left">보기 개수</label>
-                                <div class="col-sm-3">
+                                <label for="option-count" class="col-sm-8 control-label option-label">보기 개수</label>
+                                <div class="col-sm-4">
                                     <input type="text" id="option-count" class="form-control" value="8"/>
                                 </div>
                             </div>

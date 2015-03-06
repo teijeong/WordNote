@@ -49,13 +49,23 @@
     height: inherit;
 }
 
+.checkbox label {
+    font-weight: bold;
+}
+
+.checkbox input[type="checkbox"] {
+    right: 0px;
+}
 .options {
     height: 300px;
 }
 
 .options .panel-body {
-    height: 200px
-    ;
+    height: 200px;
+}
+
+.form-horizontal .option-label {
+    text-align: left;
 }
 
 .test-start {
