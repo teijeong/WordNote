@@ -1,4 +1,4 @@
-array.prototype.shuffle = function() {
+Array.prototype.shuffle = function() {
     var size = this.length;
     for (var i = 0; i < size; i++) {
         var j = Math.floor(Math.random() * size);

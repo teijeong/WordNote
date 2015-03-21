@@ -16,15 +16,20 @@ function init() {
     $.each(wordNote, function(i, word) {
         words.push([word[0], i]);
     });
+    if (options.shuffle) words.shuffle();
 
     correct = incorrect = 0;
     total = wordNote.length;
-    problemNo = Math.floor(Math.random() * total);
+    problemNo = 0;
 
     $("#test-info").html("0/0<br/ >0%<br /><br />");
 }
 
 function loadProblem(idx) {
+    if (idx >= total) {
+        problemNo = idx = total - 1;
+        return;
+    }
     $("#word").text(words[idx][0]);
 }
 
@@ -54,8 +59,7 @@ function checkAnswer() {
         $("#test-info").append("<span class='incorrect'>Incorrect (My answer: " + myAnswer + ")<br />" +
             "[ " + question + " ] Answer: " + answer);
     }
-    words.splice(problemNo, 1);
-    problemNo = Math.floor(Math.random() * words.length)
+    problemNo++;
     loadProblem (problemNo);
 }
 

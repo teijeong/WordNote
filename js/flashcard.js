@@ -15,11 +15,7 @@ function init() {
         $.each(wordNote, function(i, word) {
             wordNote[i] = [wordNote[i][1], wordNote[i][0]];
         });
-    for (var i = wordNote.length; i >=0; i--) {
-        var pick = Math.floor(Math.random() * i);
-        wordNote.push(wordNote.splice(pick, 1)[0]);
-    }
-
+    if (options.shuffle) wordNote.shuffle();
 }
 
 function loadProblem(idx) {

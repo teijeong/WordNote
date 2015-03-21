@@ -17,10 +17,11 @@ function init() {
     $.each(wordNote, function(i, word) {
         words.push([word[0], i]);
     });
+    if (options.shuffle) words.shuffle();
 
     correct = incorrect = 0;
     total = wordNote.length;
-    problemNo = Math.floor(Math.random() * total);
+    problemNo = 0;
 
     $("#test-info").html("0/0<br/ >0%<br /><br />");
 
@@ -38,6 +39,12 @@ function init() {
 function loadProblem(idx, cnt) {
     var choices = [];
     var choiceIdx = [];
+
+    if (idx >= total) {
+        problemNo = idx = total - 1;
+        return;
+    }
+
     for (var i = 0; i < cnt; i++) {
         var idx2 = Math.floor(Math.random() * wordNote.length);
         if (words[idx][1] == idx2 || choiceIdx.indexOf(idx2) != -1) {
@@ -90,7 +97,7 @@ function selectAnswer(idx) {
             "[ " + question + " ] Answer: " + answer);
     }
     words.splice(problemNo, 1);
-    problemNo = Math.floor(Math.random() * words.length)
+    problemNo++;
     loadProblem (problemNo, cnt);
 }
 
