@@ -21,7 +21,7 @@ function readFile(files) {
         var reader = new FileReader();
         reader.onload = (function(file) {
             return function(e) {
-                var text = e.target.result.split("\n");
+                var text = e.target.result.replace(/\r/g,"").split("\n");
                 var str = "";
                 wordNote = [];
                 for (var i = 1; i < text.length; i += 2) {
@@ -40,6 +40,8 @@ function generateOptions() {
     var options = {};
     if ($("#reverse").prop("checked")) options.reverse = true;
     else options.reverse = false;
+    if ($("#shuffle").prop("checked")) options.shuffle = true;
+    else options.shuffle = false;
     if ($("#flip").prop("checked")) options.flip = false;
     else options.flip = true;
     options.count = $("#option-count").val();
