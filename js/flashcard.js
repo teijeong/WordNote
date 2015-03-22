@@ -3,6 +3,8 @@ var words = [];
 var options;
 var index;
 
+var server = "http://ec2-54-65-235-228.ap-northeast-1.compute.amazonaws.com:5001/";
+
 var problemNo;
 var correct, incorrect, total;
 
@@ -18,10 +20,36 @@ function init() {
     if (options.shuffle) wordNote.shuffle();
 }
 
+var sounds = {};
+var req;
 function loadProblem(idx) {
     if( idx >= wordNote.length ) index = wordNote.length - 1;
     if( idx < 0) index = 0;
-    $("#word").text(wordNote[idx][0]);
+    var word = wordNote[idx][0];
+    $("#word").text(word);
+    word = word.toLowerCase();
+
+
+
+    if (sounds[word]) {
+        var sound = new Howl({
+            urls:[sounds[word]]
+        }).play();
+    } else {
+        $.ajax({
+            url: server + "sound/" + word,
+            crossDomain: true,
+            type: 'GET',
+            success: function(data) {
+                var url = "http://media.merriam-webster.com/soundc11/" + data.sound;
+                sounds[word] = url;
+                var sound = new Howl({
+                    urls:[url]
+                }).play();
+            }
+        });
+    }
+
     $("#definition").empty();
     flipped = options.flip;
     flipCard();
@@ -57,6 +85,7 @@ $("body").keyup(function(event) {
 $(document).ready( function() {
     $(".prev").click(function() {loadProblem(--index);});
     $(".next").click(function() {loadProblem(++index);});
+    $(".flip").click(flipCard);
     init();
     loadProblem(0);
 });
