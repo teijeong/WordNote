@@ -1,4 +1,5 @@
 var WordNoteApp = angular.module('WordNote', []);
+var server = "http://ec2-54-65-235-228.ap-northeast-1.compute.amazonaws.com:5001/";
 
 WordNoteApp.directive('progressbar', function() {
     return {

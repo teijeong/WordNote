@@ -1,6 +1,3 @@
-var server = "http://ec2-54-65-235-228.ap-northeast-1.compute.amazonaws.com:5001/";
-
-
 WordNoteApp.controller('FlashcardController', function($scope) {
     $scope.wordNote = JSON.parse(localStorage.getItem("wordNote"));
     $scope.options = JSON.parse(localStorage.getItem("wordNote.options"));
@@ -14,8 +11,8 @@ WordNoteApp.controller('FlashcardController', function($scope) {
     if ($scope.options.reverse)
         $.each($scope.wordNote, function(i, word) {
             $scope.wordNote[i] = {
-                word: wordNote[i].meaning[0],
-                meaning: [wordNote[i].word]
+                word: $scope.wordNote[i].meaning[0],
+                meaning: [$scope.wordNote[i].word]
             };
         });
     if ($scope.options.shuffle) $scope.wordNote.shuffle();
@@ -34,7 +31,7 @@ var loadProblem = function(idx, $scope) {
     if( idx >= $scope.wordNote.length ) idx = $scope.problemNo = $scope.wordNote.length - 1;
     if( idx < 0) idx = $scope.problemNo = 0;
     $scope.progress.correct = idx;
-    $scope.problem = $scope.words[idx];
+    $scope.problem = $scope.wordNote[idx];
 
     $scope.problem.word = $scope.problem.word.toLowerCase();
 
