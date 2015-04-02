@@ -38,9 +38,9 @@ class Sound(Resource):
             if len(soup.find_all('entry')) == 0:
                 return {'sound': ''}
             sound = soup.sound.wav.get_text()
-            if sound[0:2] == 'bix':
+            if sound[0:3] == 'bix':
                 sound = 'bix/' + sound
-            elif sound[0:1] == 'gg':
+            elif sound[0:2] == 'gg':
                 sound = 'gg/' + sound
             elif sound[0].isdigit():
                 sound = 'number/' + sound

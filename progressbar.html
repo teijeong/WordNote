@@ -1,6 +1,6 @@
 <div class="progress" style="width:50%;margin-top:10px;margin-left:50%;">
     <div class="progress-bar progress-bar-success"  ng-style="{'width':(4 > progress.correct/progress.total * 100)?'4%':(progress.correct/progress.total * 100 +'%')}">
-        {{(progress.correct+progress.incorrect)/progress.total * 100 | number:1}}%
+        {{progress.correct/progress.total * 100 | number:1}}%
     </div>
     <div class="progress-bar progress-bar-danger"  ng-style="{'width':progress.incorrect/progress.total * 100 +'%'}">
     </div>

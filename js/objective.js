@@ -44,10 +44,7 @@ WordNoteApp.controller('ObjectiveController', function($scope) {
 });
 
 function loadProblem(idx, $scope) {
-    if (idx >= $scope.total) {
-        $scope.problemNo = idx = $scope.total - 1;
-        return;
-    }
+    if (idx >= $scope.total) return;
     $scope.problem = $scope.words[idx];
     
     if ($scope.options.tts) {
@@ -73,6 +70,7 @@ function loadProblem(idx, $scope) {
 }
 
 function checkAnswer($scope) {
+    if ($scope.problemNo >= $scope.total) return;
     $scope.correct = false;
     $scope.prevAnswer = $scope.myAnswer;
     $scope.prevProblem = $scope.problem;

@@ -28,9 +28,9 @@ WordNoteApp.controller('FlashcardController', function($scope) {
 });
 
 var loadProblem = function(idx, $scope) {
-    if( idx >= $scope.wordNote.length ) idx = $scope.problemNo = $scope.wordNote.length - 1;
+    if( idx >= $scope.wordNote.length ) return;
     if( idx < 0) idx = $scope.problemNo = 0;
-    $scope.progress.correct = idx;
+    $scope.progress.correct = idx + 1;
     $scope.problem = $scope.wordNote[idx];
 
     $scope.problem.word = $scope.problem.word.toLowerCase();

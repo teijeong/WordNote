@@ -47,10 +47,7 @@ function loadProblem(idx, $scope) {
     $scope.choices = [];
     var choiceIdx = [];
 
-    if (idx >= $scope.progress.total) {
-        $scope.problemNo = idx = $scope.total - 1;
-        return;
-    }
+    if (idx >= $scope.progress.total) return;
 
     $scope.problem = $scope.words[idx];
     var word = $scope.words[idx].word;
@@ -97,6 +94,7 @@ function keyup($event, $scope) {
 }
 
 function selectAnswer(idx, $scope) {
+    if ($scope.problemNo >= $scope.total) return;
     $("#choice-" + idx).css("background-color","#BCE8F1");
     $("#choice-" + idx).animate({
         backgroundColor: "#FFFFFF"
