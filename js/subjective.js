@@ -1,107 +1,121 @@
-var wordNote=[];
-var words = [];
 
-var problemNo;
-var correct, incorrect, total;
-var cnt = 8;
+WordNoteApp.controller('SubjectiveController', function($scope) {
+    $scope.wordNote = JSON.parse(localStorage.getItem("wordNote"));
+    $scope.options = JSON.parse(localStorage.getItem("wordNote.options"));
+    $scope.problemNo = 0;
+    $scope.correct = false;
+    $scope.progress = {
+        correct:0,
+        incorrect:0,
+        total:$scope.wordNote.length
+    };
 
-function init() {
-    wordNote = JSON.parse(localStorage.getItem("wordNote"));
-    options = JSON.parse(localStorage.getItem("wordNote.options"));
+    $scope.words = [];
 
-    if (options.reverse)
-        $.each(wordNote, function(i, word) {
-            wordNote[i] = [wordNote[i][1], wordNote[i][0]];
+    if ($scope.options.count) $scope.cnt = $scope.options.count;
+    
+    if ($scope.cnt >= $scope.progress.total)
+        $scope.cnt = $scope.progress.total;
+
+    if ($scope.options.reverse)
+        $.each($scope.wordNote, function(i, word) {
+            $scope.words.push({
+                word: $scope.wordNote[i].meaning[0],
+                meaning: [$scope.wordNote[i].word],
+                idx: i
+            });
         });
-    if (options.count) cnt = options.count;
-    $.each(wordNote, function(i, word) {
-        words.push([word[0], i]);
-    });
-    if (options.shuffle) words.shuffle();
+    else
+        $.each($scope.wordNote, function(i, word) {
+            $scope.words.push({
+                word: $scope.wordNote[i].word,
+                meaning: $scope.wordNote[i].meaning,
+                idx: i
+            });
+        });
+    if ($scope.options.shuffle) $scope.words.shuffle();
 
-    correct = incorrect = 0;
-    total = wordNote.length;
-    problemNo = 0;
+    $scope.sounds = {};
 
-    $("#test-info").html("0/0<br/ >0%<br /><br />");
+    $scope.loadProblem = function(idx) {loadProblem(idx, $scope)};
+    $scope.selectAnswer = function(idx) {selectAnswer(idx, $scope);};
+    $scope.keyup = function($event) {keyup($event, $scope);};
+    $scope.loadProblem(0);
+});
 
-    for (var i = 1; i <= cnt; i++)
-        $("#choices").append(
-            "<div class='list-group-item'id='choice-" + i + "'>" +
-            "[" + i + "] <span class='meaning'></span></div>");
-
-    $("#choices div").click(function() {
-        var idx = $(this).attr("id").substr(7);
-        selectAnswer(idx);
-    });
-}
-
-function loadProblem(idx, cnt) {
-    var choices = [];
+function loadProblem(idx, $scope) {
+    $scope.choices = [];
     var choiceIdx = [];
 
-    if (idx >= total) {
-        problemNo = idx = total - 1;
+    if (idx >= $scope.progress.total) {
+        $scope.problemNo = idx = $scope.total - 1;
         return;
     }
 
-    for (var i = 0; i < cnt; i++) {
-        var idx2 = Math.floor(Math.random() * wordNote.length);
-        if (words[idx][1] == idx2 || choiceIdx.indexOf(idx2) != -1) {
+    $scope.problem = $scope.words[idx];
+    var word = $scope.words[idx].word;
+
+    for (var i = 0; i < $scope.cnt; i++) {
+        var idx2 = Math.floor(Math.random() * $scope.words.length);
+        if (idx == idx2 || choiceIdx.indexOf(idx2) != -1) {
             i--;
             continue;
         }
         choiceIdx.push(idx2);
-        var meaning = Math.floor(Math.random() * (wordNote[idx2].length - 1)) + 1;
-        choices.push(wordNote[idx2][meaning]);
+        var meaningIdx = Math.floor(Math.random() * ($scope.words[idx2].meaning.length));
+        $scope.choices.push($scope.words[idx2].meaning[meaningIdx]);
     }
-    var idx2 = Math.floor(Math.random() * cnt);
-    var meaning = Math.floor(Math.random() * (wordNote[words[idx][1]].length - 1)) + 1;
-    choices[idx2] = wordNote[words[idx][1]][meaning];
-    $("#word").text(words[idx][0]);
-    $.each(choices, function(i, choice) {
-        $("#choice-" + (i + 1) + " .meaning").text(choice);
-    });
+    var idx2 = Math.floor(Math.random() * $scope.cnt);
+    var meaningIdx = Math.floor(Math.random() * ($scope.words[idx].meaning.length));
+    $scope.choices[idx2] = $scope.words[idx].meaning[meaningIdx];
+
+    if ($scope.options.tts) {
+        if (sounds[$scope.problem.word]) {
+            var sound = new Howl({
+                urls:[$scope.sounds[$scope.problem.word]]
+            }).play();
+        } else {
+            $.ajax({
+                url: server + "sound/" + $scope.problem.word,
+                crossDomain: true,
+                type: 'GET',
+                success: function(data) {
+                    var url = "http://media.merriam-webster.com/soundc11/" + data.sound;
+                    $scope.sounds[$scope.problem.word] = url;
+                    var sound = new Howl({
+                        urls:[url]
+                    }).play();
+                }
+            });
+        }
+    }
 }
 
-$("body").keyup(function(event) {
-    if ( 1 <= event.key && event.key <= cnt)
-        selectAnswer(event.key);
-});
+function keyup($event, $scope) {
+    if ( 1 <= $event.key && $event.key <= $scope.cnt)
+        $scope.selectAnswer($event.key);
+}
 
-function selectAnswer(idx) {
+function selectAnswer(idx, $scope) {
     $("#choice-" + idx).css("background-color","#BCE8F1");
     $("#choice-" + idx).animate({
         backgroundColor: "#FFFFFF"
     }, 300);
-    var myAnswer = $("#choice-" + idx + " span").text();
-    var isCorrect = false;
+    $scope.myAnswer = $scope.choices[idx - 1];
+    $scope.correct = false;
 
-    var answer = wordNote[words[problemNo][1]].slice();
-    var question = answer[0];
-    answer = answer.splice(1,1).join(', ');
+    $scope.prevAnswer = $scope.myAnswer;
+    $scope.prevProblem = $scope.problem;
 
-    if (wordNote[words[problemNo][1]].indexOf(myAnswer, 1) != -1) {
-        isCorrect = true;
-        correct++;
+    var answer = $scope.problem.meaning;
+    var question = $scope.problem.word;
+
+    if (answer.indexOf($scope.myAnswer) != -1) {
+        $scope.correct = true;
+        $scope.progress.correct++;
     } else
-        incorrect++;
+        $scope.progress.incorrect++;
 
-    $("#test-info").html(correct + "/" + (correct + incorrect) + "<br/ >" +
-        Math.floor((correct +incorrect) / total * 100) + "%<br />");
-    if (isCorrect) 
-        $("#test-info").append("<span class='correct'>Correct<br />" +
-            "[ " + question + " ] Answer: " + answer + "</span>");
-    else {
-        $("#test-info").append("<span class='incorrect'>Incorrect (My answer: " + myAnswer + ")<br />" +
-            "[ " + question + " ] Answer: " + answer);
-    }
-    words.splice(problemNo, 1);
-    problemNo++;
-    loadProblem (problemNo, cnt);
+    $scope.problemNo++;
+    $scope.loadProblem ($scope.problemNo);
 }
-
-$(document).ready( function() {
-    init();
-    loadProblem(problemNo, cnt);
-});

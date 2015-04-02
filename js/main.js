@@ -26,7 +26,11 @@ function readFile(files) {
                 wordNote = [];
                 for (var i = 1; i < text.length; i += 2) {
                     str += text[i-1] + ": " + text[i] + "\n";
-                    wordNote.push([text[i-1]].concat(text[i].split(";").map($.trim)));
+                    var word = {
+                        word: text[i-1],
+                        meaning: text[i].split(";").map($.trim)
+                    };
+                    wordNote.push(word);
                 }
                 $("#list").val(str);
                 localStorage.setItem("wordNote", JSON.stringify(wordNote));
@@ -44,7 +48,11 @@ function generateOptions() {
     else options.shuffle = false;
     if ($("#flip").prop("checked")) options.flip = false;
     else options.flip = true;
+    if ($("#tts").prop("checked")) options.tts = true;
+    else options.tts = false;
     options.count = $("#option-count").val();
+    if ($("#autoplay").val() !== "0")
+        options.autoplay = Number($("#autoplay").val());
     return options;
 }
 

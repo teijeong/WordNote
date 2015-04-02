@@ -1,91 +1,90 @@
-var wordNote=[];
-var words = [];
-var options;
-var index;
-
 var server = "http://ec2-54-65-235-228.ap-northeast-1.compute.amazonaws.com:5001/";
 
-var problemNo;
-var correct, incorrect, total;
 
-function init() {
-    wordNote = JSON.parse(localStorage.getItem("wordNote"));
-    options = JSON.parse(localStorage.getItem("wordNote.options"));
-    index = 0;
-
-    if (options.reverse)
-        $.each(wordNote, function(i, word) {
-            wordNote[i] = [wordNote[i][1], wordNote[i][0]];
+WordNoteApp.controller('FlashcardController', function($scope) {
+    $scope.wordNote = JSON.parse(localStorage.getItem("wordNote"));
+    $scope.options = JSON.parse(localStorage.getItem("wordNote.options"));
+    $scope.problemNo = 0;
+    $scope.progress = {
+        correct:0,
+        incorrect:0,
+        total:$scope.wordNote.length
+    };
+    
+    if ($scope.options.reverse)
+        $.each($scope.wordNote, function(i, word) {
+            $scope.wordNote[i] = {
+                word: wordNote[i].meaning[0],
+                meaning: [wordNote[i].word]
+            };
         });
-    if (options.shuffle) wordNote.shuffle();
-}
+    if ($scope.options.shuffle) $scope.wordNote.shuffle();
 
-var sounds = {};
-var req;
-function loadProblem(idx) {
-    if( idx >= wordNote.length ) index = wordNote.length - 1;
-    if( idx < 0) index = 0;
-    var word = wordNote[idx][0];
-    $("#word").text(word);
-    word = word.toLowerCase();
+    $scope.sounds = {};
 
+    $scope.loadProblem = function(idx) {loadProblem(idx,$scope)};
+    $scope.flipCard = function() {flipCard($scope);};
+    $scope.keypress = function($event) { keypress($event, $scope) };
+    $scope.prev = function() {$scope.loadProblem(--$scope.problemNo);};
+    $scope.next = function() {$scope.loadProblem(++$scope.problemNo);};
+    $scope.loadProblem(0);
+});
 
+var loadProblem = function(idx, $scope) {
+    if( idx >= $scope.wordNote.length ) idx = $scope.problemNo = $scope.wordNote.length - 1;
+    if( idx < 0) idx = $scope.problemNo = 0;
+    $scope.progress.correct = idx;
+    $scope.problem = $scope.words[idx];
 
-    if (sounds[word]) {
-        var sound = new Howl({
-            urls:[sounds[word]]
-        }).play();
-    } else {
-        $.ajax({
-            url: server + "sound/" + word,
-            crossDomain: true,
-            type: 'GET',
-            success: function(data) {
-                var url = "http://media.merriam-webster.com/soundc11/" + data.sound;
-                sounds[word] = url;
-                var sound = new Howl({
-                    urls:[url]
-                }).play();
-            }
-        });
+    $scope.problem.word = $scope.problem.word.toLowerCase();
+
+    if ($scope.options.tts) {
+        if ($scope.sounds[$scope.problem.word]) {
+            var sound = new Howl({
+                urls:[$scope.sounds[$scope.problem.word]]
+            }).play();
+        } else {
+            $.ajax({
+                url: server + "sound/" + $scope.problem.word,
+                crossDomain: true,
+                type: 'GET',
+                success: function(data) {
+                    var url = "http://media.merriam-webster.com/soundc11/" + data.sound;
+                    $scope.sounds[$scope.problem.word] = url;
+                    var sound = new Howl({
+                        urls:[url]
+                    }).play();
+                }
+            });
+        }
     }
 
-    $("#definition").empty();
-    flipped = options.flip;
-    flipCard();
-}
+    $scope.flipped = $scope.options.flip;
+    $scope.flipCard();
 
-var flipped;
-function flipCard() {
-    if (flipped)
-        $("#definition").empty();
-    else
-        for (var i = 1; i < wordNote[index].length; i++) {
-            $("#definition").append("<li class='list-group-item'>" + wordNote[index][i] + "</li>");
-        }
-    flipped = !flipped;
-}
+    if ($scope.options.autoplay) {
+        $scope.$apply();
+        setTimeout(function() {$scope.loadProblem(++$scope.problemNo);},
+            $scope.options.autoplay * 1000);
+    }
+};
 
-$("body").keyup(function(event) {
-    switch ( event.keyCode){
+var flipCard = function($scope) {
+    $scope.flipped = !$scope.flipped;
+};
+
+var keypress = function($event, $scope) {
+    switch ($event.keyCode){
         case 37: // Left
-            loadProblem(--index);
+            $scope.loadProblem(--$scope.problemNo);
             break;
         case 39: // Right
-            loadProblem(++index);
+            $scope.loadProblem(++$scope.problemNo);
             break;
         case 32: // Space
         case 38: // Up
         case 40: // Down
-            flipCard();
+            $scope.flipCard();
             break;
     }
-});
-
-$(document).ready( function() {
-    $(".prev").click(function() {loadProblem(--index);});
-    $(".next").click(function() {loadProblem(++index);});
-    $(".flip").click(flipCard);
-    init();
-    loadProblem(0);
-});
+};

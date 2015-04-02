@@ -26,6 +26,8 @@ CORS(app, allow_headers='Content-Type',
 
 class Sound(Resource):
     def get(self, word):
+        if not word.isalpha():
+            return {'sound':''}
         cur = db.words.find({'word': word})
         if cur.count() == 0:
             url = 'http://www.dictionaryapi.com/api/v1/references/collegiate/xml/%s?key=09fb7395-bea4-4768-a901-e463ef5d7df7' % word

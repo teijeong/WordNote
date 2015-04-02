@@ -5,73 +5,89 @@ var options;
 var problemNo;
 var correct, incorrect, total;
 
-function init() {
-    wordNote = JSON.parse(localStorage.getItem("wordNote"));
-    options = JSON.parse(localStorage.getItem("wordNote.options"));
+WordNoteApp.controller('ObjectiveController', function($scope) {
+    $scope.wordNote = JSON.parse(localStorage.getItem("wordNote"));
+    $scope.options = JSON.parse(localStorage.getItem("wordNote.options"));
+    $scope.problemNo = 0;
+    $scope.correct = false;
+    $scope.progress = {
+        correct:0,
+        incorrect:0,
+        total:$scope.wordNote.length
+    };
 
-    if (options.reverse)
-        $.each(wordNote, function(i, word) {
-            wordNote[i] = [wordNote[i][1], wordNote[i][0]];
+    $scope.words = [];
+    
+    if ($scope.options.reverse)
+        $.each($scope.wordNote, function(i, word) {
+            $scope.words.push({
+                word: $scope.wordNote[i].meaning[0],
+                meaning: [$scope.wordNote[i].word],
+                idx: i
+            });
         });
-    $.each(wordNote, function(i, word) {
-        words.push([word[0], i]);
-    });
-    if (options.shuffle) words.shuffle();
+    else
+        $.each($scope.wordNote, function(i, word) {
+            $scope.words.push({
+                word: $scope.wordNote[i].word,
+                meaning: $scope.wordNote[i].meaning,
+                idx: i
+            });
+        });
+    if ($scope.options.shuffle) $scope.words.shuffle();
 
-    correct = incorrect = 0;
-    total = wordNote.length;
-    problemNo = 0;
+    $scope.sounds = {};
 
-    $("#test-info").html("0/0<br/ >0%<br /><br />");
-}
+    $scope.loadProblem = function(idx) {loadProblem(idx,$scope)};
+    $scope.checkAnswer = function() {checkAnswer($scope);};
+    $scope.loadProblem(0);
+});
 
-function loadProblem(idx) {
-    if (idx >= total) {
-        problemNo = idx = total - 1;
+function loadProblem(idx, $scope) {
+    if (idx >= $scope.total) {
+        $scope.problemNo = idx = $scope.total - 1;
         return;
     }
-    $("#word").text(words[idx][0]);
-}
-
-function checkAnswer() {
-    var isCorrect = false;
-    var myAnswer = $("#answer").val();
-
-    var answer = wordNote[words[problemNo][1]].slice();
-    var question = answer[0];
-    answer = answer.splice(1,1).join(', ');
-
-    $("#answer").val("");
-    if (wordNote[words[problemNo][1]].indexOf(myAnswer, 1) != -1) {
-        isCorrect = true;
-        correct++;
-    } else
-        incorrect++;
-
-
-
-    $("#test-info").html(correct + "/" + (correct + incorrect) + "<br/ >" +
-        Math.floor((correct +incorrect) / total * 100) + "%<br />");
-    if (isCorrect) 
-        $("#test-info").append("<span class='correct'>Correct</span><br />" +
-            "[ " + question + " ] Answer: " + answer);
-    else {
-        $("#test-info").append("<span class='incorrect'>Incorrect (My answer: " + myAnswer + ")<br />" +
-            "[ " + question + " ] Answer: " + answer);
+    $scope.problem = $scope.words[idx];
+    
+    if ($scope.options.tts) {
+        if (sounds[$scope.problem.word]) {
+            var sound = new Howl({
+                urls:[$scope.sounds[$scope.problem.word]]
+            }).play();
+        } else {
+            $.ajax({
+                url: server + "sound/" + $scope.problem.word,
+                crossDomain: true,
+                type: 'GET',
+                success: function(data) {
+                    var url = "http://media.merriam-webster.com/soundc11/" + data.sound;
+                    $scope.sounds[$scope.problem.word] = url;
+                    var sound = new Howl({
+                        urls:[url]
+                    }).play();
+                }
+            });
+        }
     }
-    problemNo++;
-    loadProblem (problemNo);
 }
 
-$(document).ready( function() {
-    $("form").submit(function(event) {
-        event.preventDefault();
-    });
-    $("#answer").submit(function(event) {
-        event.preventDefault();
-        checkAnswer();
-    });
-    $("#checkAnswer").click(checkAnswer);
-    init();
-    loadProblem(problemNo);
-});
+function checkAnswer($scope) {
+    $scope.correct = false;
+    $scope.prevAnswer = $scope.myAnswer;
+    $scope.prevProblem = $scope.problem;
+
+    var answer = $scope.problem.meaning;
+    var question = $scope.problem.word;
+
+    if (answer.indexOf($scope.myAnswer) != -1) {
+        $scope.correct = true;
+        $scope.progress.correct++;
+    } else
+        $scope.progress.incorrect++;
+
+    $scope.problemNo++;
+    $scope.myAnswer = "";
+    $scope.loadProblem ($scope.problemNo);
+}
+
