@@ -51,7 +51,7 @@ function loadProblem(idx, $scope) {
     $scope.problem = $scope.words[idx];
     
     if ($scope.options.tts) {
-        if (sounds[$scope.problem.word]) {
+        if ($scope.sounds[$scope.problem.word]) {
             var sound = new Howl({
                 urls:[$scope.sounds[$scope.problem.word]]
             }).play();
