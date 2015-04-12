@@ -1,13 +1,7 @@
-var wordNote=[];
-var words = [];
-var options;
-
-var problemNo;
-var correct, incorrect, total;
-
 WordNoteApp.controller('ObjectiveController', function($scope) {
     $scope.wordNote = JSON.parse(localStorage.getItem("wordNote"));
     $scope.options = JSON.parse(localStorage.getItem("wordNote.options"));
+    $scope.testInfo = {type:'objective'};
     $scope.problemNo = 0;
     $scope.correct = false;
     $scope.progress = {
@@ -43,8 +37,22 @@ WordNoteApp.controller('ObjectiveController', function($scope) {
     $scope.loadProblem(0);
 });
 
+
+function generateTestInfo($scope) {
+    $scope.testInfo.correct = $scope.progress.correct;
+    $scope.testInfo.incorrect = $scope.progress.incorrect;
+    $scope.testInfo.total = $scope.progress.total;
+}
+
 function loadProblem(idx, $scope) {
-    if (idx >= $scope.total) return;
+    if (idx >= $scope.progress.total) {
+        localStorage.setItem("wordNote.results", JSON.stringify($scope.wordNote));
+        generateTestInfo($scope);
+        localStorage.setItem("wordNote.testInfo", JSON.stringify($scope.testInfo));
+        location.href = "result.html";
+        return;
+    }
+
     $scope.problem = $scope.words[idx];
     
     if ($scope.options.tts) {
@@ -54,7 +62,7 @@ function loadProblem(idx, $scope) {
             }).play();
         } else {
             $.ajax({
-                url: server + "sound/" + $scope.problem.word,
+                url: SERVER + "sound/" + $scope.problem.word,
                 crossDomain: true,
                 type: 'GET',
                 success: function(data) {
@@ -67,10 +75,16 @@ function loadProblem(idx, $scope) {
             });
         }
     }
+
+    timeChecker.reset();
 }
 
 function checkAnswer($scope) {
     if ($scope.problemNo >= $scope.total) return;
+
+    var problem = $scope.wordNote[$scope.words[$scope.problemNo].idx];
+    problem.time = timeChecker.getElapsed();
+
     $scope.correct = false;
     $scope.prevAnswer = $scope.myAnswer;
     $scope.prevProblem = $scope.problem;
@@ -81,8 +95,11 @@ function checkAnswer($scope) {
     if (answer.indexOf($scope.myAnswer) != -1) {
         $scope.correct = true;
         $scope.progress.correct++;
-    } else
+        problem.correct = true;
+    } else {
         $scope.progress.incorrect++;
+        problem.correct = false;
+    }
 
     $scope.problemNo++;
     $scope.myAnswer = "";

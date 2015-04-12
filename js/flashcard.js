@@ -42,7 +42,7 @@ var loadProblem = function(idx, $scope) {
             }).play();
         } else {
             $.ajax({
-                url: server + "sound/" + $scope.problem.word,
+                url: SERVER + "sound/" + $scope.problem.word,
                 crossDomain: true,
                 type: 'GET',
                 success: function(data) {

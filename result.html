@@ -1,0 +1,42 @@
+<html ng-app="WordNote">
+<head>
+    <meta charset="utf-8" />
+    <title>WordNote - Results</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/main.css" rel="stylesheet" />
+    <link href="css/jquery-ui.min.css" rel="stylesheet" />
+    <link href="css/jquery-ui.structure.min.css" rel="stylesheet" />
+    <script src="js/jquery-2.1.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/wordnote.js"></script>
+    <script src="js/result.js"></script>
+</head>
+<body>
+    <div id="result" class="container" ng-controller="ResultController">
+        <div class="panel panel-default">
+            <div class="panel-heading"><h2>시험 결과</h2></div>
+            <div class="panel-body">
+                <strong>점수</strong><h3 ng-style="{color:(testInfo.score<050?'#C9302C':(testInfo.score<70?'#EC971F':'#449D44'))}">{{testInfo.score | number:1}}%</h3>
+            </div>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>단어</th>
+                        <th>O/X</th>
+                        <th>소요 시간</th>
+                    </tr>
+                </thead>
+                <tr ng-repeat="result in results">
+                    <td>{{result.word}}</td>
+                    <td><span class="correct" ng-show="result.correct">O</span>
+                        <span class="incorrect" ng-hide="result.correct">X</span></td>
+                    <td>{{result.time / 1000 | number:1}}s</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
